@@ -88,8 +88,6 @@ int consulta() //Função responsável por consultar os usuários no sistema!
 	}
 	
 	system("pause"); //responsável para pausar a tela
-	
-	
 }
 
 int deletar() //Função responsável por deletar os usuários no sistema!
@@ -130,10 +128,6 @@ int deletar() //Função responsável por deletar os usuários no sistema!
 		}
 		
 	}
-	
-
-	
-
 }
 
 int main()
