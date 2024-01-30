@@ -61,13 +61,13 @@ int registro() //Função responsável por cadastrar os usuários no sistema
 }
 
 int consulta() //Função responsável por consultar os usuários no sistema!
-{
-	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
-	
+{	
 	//inicio da criação de variaveis/string
 	char cpf[40]; //para o sistema consultar ele precisa trazer uma variavel
 	char conteudo[200];
 	//final da criação de variaveis/string
+	
+	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem	
 	
 	printf("Digite o CPF a ser consultado: "); //coletando informação do usuario
 	scanf("%s",cpf); //%s refere-se a string
@@ -86,7 +86,6 @@ int consulta() //Função responsável por consultar os usuários no sistema!
 		printf("%s", conteudo);
 		printf("\n\n");
 	}
-	
 	system("pause"); //responsável para pausar a tela
 }
 
@@ -129,58 +128,81 @@ int deletar() //Função responsável por deletar os usuários no sistema!
 		
 	}
 }
-
 int main()
 {
 	int opcao=0; //Definindo variáveis
 	int laco=1;
+	int comparacao; // usando uma variavel para deixar o codigo mais limpo na parte do IF	
+	char login[10] = "a"; //[]colocando limite de caracteres, "a" atualiza o valor que tiver la na comparação
+	char senha[10] = "a"; 
+
 	
-	for(laco=1;laco=1;) //incio da repetição
+	setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem	
+	printf("### Cartório da EBAC ###\n\n");
+	
+	while (1) // o enquanto(while) é usado para essa função de login e senha, enquanto o login não for correto vamos criar um loop sem sair do programa 
 	{
+		system("cls"); // limpa a tela
+		printf("Login de administrador!\n\nDigite o seu Login: ");
+		scanf("%s",login); // salvando o login digitada
+		printf("Digite sua senha: ");
+		scanf("%s",senha); // salvando a senha
 	
-		system("cls"); //limpa a tela
+		comparacao = strcmp(login, "Michel") && strcmp(senha, "123"); //str(string) CMP(comparação) das coisas login e senha
 	
-		setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
-	
-		printf("### Cartório da EBAC ###\n\n"); //Inicio do menu
-		printf("Escolha a opção desejada do menu:\n\n");
-	
-		printf("\tO1 - Registrar nomes\n"); 
-		printf("\tO2 - Consultar nomes\n");
-		printf("\tO3 - Deletar nomes\n");
-		printf("\t04 - Sair do sistema\n\n");
-		printf("Opção: ");//fim do menu
-	
-		scanf("%d", &opcao); //armazenando a escolha do usuário
-	
-		system("cls"); //responsável por limpar a tela
-	
-		switch(opcao) //Inicio da seleção do menu
+		if(comparacao == 0) // com a variavel comparacao o codigo a cima passou a ser a logica e aqui ficou mais clean o codigo 
 		{
-			case 1:
-			registro(); // chamada de funções
-			break;
+			system("cls"); // limpa a tela
+			for(laco=1;laco=1;) //incio da repetição
+			{
+				system("cls"); //limpa a tela
+	
+				setlocale(LC_ALL, "Portuguese"); //Definindo a linguagem
+	
+				printf("### Cartório da EBAC ###\n\n"); //Inicio do menu
+				printf("Escolha a opção desejada do menu:\n\n");
+	
+				printf("\tO1 - Registrar nomes\n"); 
+				printf("\tO2 - Consultar nomes\n");
+				printf("\tO3 - Deletar nomes\n");
+				printf("\t04 - Sair do sistema\n\n");
+				printf("Opção: ");//fim do menu
+	
+				scanf("%d", &opcao); //armazenando a escolha do usuário
+	
+				system("cls"); //responsável por limpar a tela
+	
+				switch(opcao) //Inicio da seleção do menu
+				{
+					case 1:
+					registro(); // chamada de funções
+					break;
 			
-			case 2:
-			consulta();
-			break;
+					case 2:
+					consulta();
+					break;
 			
-			case 3:	
-			deletar();
-			break;
+					case 3:	
+					deletar();
+					break;
 			
-			case 4:
-			printf("Obrigado por utilizar o sistema!\n");
-			return 0;
-			break;
-			
-			default:
-			printf("Essa opção não está disponível!\n");
-			system("pause");
-			break;
-			//fim da seleção
+					case 4:
+					printf("Obrigado por utilizar o sistema!\n");
+					return 0;
+					break;
 				
-		}	
-	}		
+					default:
+					printf("Essa opção não está disponível!\n");
+					system("pause");
+					break;
+					//fim da seleção
+				}	
+			}		
+		}else
+			{
+				printf("Senha incorreta, tente novamente! \n");
+				system("pause"); // para a tela para mostrar para o usuario as mensagens
+			}
+	}
 }
 
